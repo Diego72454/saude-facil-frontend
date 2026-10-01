@@ -1,0 +1,208 @@
+.minhas-fichas-container {
+  min-height: 100vh;
+  background: var(--gray-50);
+}
+
+.main-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.page-header {
+  margin-bottom: 32px;
+}
+
+.page-header h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--gray-900);
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+}
+
+.page-header p {
+  font-size: 15px;
+  color: var(--gray-500);
+}
+
+.erro-msg {
+  background: var(--danger-light);
+  color: var(--danger);
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  margin-bottom: 20px;
+  border: 1px solid #e6c2b3;
+}
+
+.carregando {
+  text-align: center;
+  color: var(--gray-400);
+  padding: 60px;
+  font-size: 15px;
+}
+
+.vazio {
+  text-align: center;
+  color: var(--gray-400);
+  padding: 60px;
+}
+
+.vazio p {
+  font-size: 15px;
+  margin-bottom: 16px;
+}
+
+.btn-pegar {
+  padding: 11px 28px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-pegar:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.fichas-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ficha-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border: 1.5px solid var(--gray-200);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s;
+}
+
+.ficha-card:hover {
+  box-shadow: var(--shadow);
+}
+
+.ficha-numero-box {
+  background: var(--primary);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  text-align: center;
+  min-width: 90px;
+  flex-shrink: 0;
+}
+
+.ficha-numero {
+  font-size: 22px;
+  font-weight: 800;
+  color: white;
+  letter-spacing: -0.5px;
+}
+
+.ficha-numero-label {
+  font-size: 10px;
+  color: rgba(255,255,255,0.75);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 2px;
+}
+
+.ficha-detalhes {
+  flex: 1;
+}
+
+.ficha-detalhes h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--gray-900);
+  margin-bottom: 6px;
+}
+
+.especialidade {
+  font-size: 13px;
+  color: var(--primary);
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.unidade, .data {
+  font-size: 13px;
+  color: var(--gray-400);
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.ficha-status-area {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.ficha-status {
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 20px;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn-cancelar {
+  background: none;
+  border: 1.5px solid var(--gray-200);
+  color: var(--gray-500);
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-cancelar:hover {
+  border-color: var(--danger);
+  color: var(--danger);
+  background: var(--danger-light);
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 24px 16px;
+  }
+
+  .page-header h2 {
+    font-size: 22px;
+  }
+
+  .ficha-card {
+    flex-wrap: wrap;
+  }
+
+  .ficha-detalhes {
+    flex-basis: calc(100% - 106px);
+  }
+
+  .ficha-status-area {
+    flex-direction: row;
+    align-items: center;
+    flex-basis: 100%;
+    justify-content: space-between;
+    margin-top: 4px;
+  }
+}

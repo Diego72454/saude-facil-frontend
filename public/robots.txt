@@ -1,0 +1,10 @@
+# Lumen Care é um sistema autenticado — não faz sentido o Google indexar
+# páginas internas que exigem login. Bloqueamos tudo exceto o login/cadastro.
+User-agent: *
+Disallow: /unidades
+Disallow: /minhas-fichas
+Disallow: /meus-agendamentos
+Disallow: /admin
+Disallow: /atendente
+Allow: /login
+Allow: /cadastro

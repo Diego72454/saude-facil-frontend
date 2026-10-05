@@ -11,6 +11,7 @@ function Cadastro() {
     email: '',
     senha: '',
     telefone: '',
+    numeroProntuario: '',
     dataNascimento: ''
   })
   const [erro, setErro] = useState('')
@@ -104,6 +105,17 @@ function Cadastro() {
               name="telefone"
               placeholder="87999999999"
               value={form.telefone}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="campo">
+            <label>Número do prontuário (opcional)</label>
+            <input
+              type="text"
+              name="numeroProntuario"
+              placeholder="Se já tiver um, informe aqui"
+              value={form.numeroProntuario}
               onChange={handleChange}
             />
           </div>

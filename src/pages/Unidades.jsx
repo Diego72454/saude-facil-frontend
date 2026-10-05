@@ -25,14 +25,16 @@ function Unidades() {
     }
   }
 
+  const unicaUnidade = unidades.length === 1 ? unidades[0] : null
+
   return (
     <div className="unidades-container">
       <Navbar />
 
       <div className="page-banner">
         <div className="page-banner-content">
-          <h2><IconHospital size={22} /> Unidades de Saúde</h2>
-          <p>Selecione o posto onde deseja ser atendido</p>
+          <h2><IconHospital size={22} /> {unicaUnidade ? unicaUnidade.nome : 'Unidades de Saúde'}</h2>
+          <p>{unicaUnidade ? 'Sua unidade de atendimento' : 'Selecione o posto onde deseja ser atendido'}</p>
         </div>
       </div>
 
@@ -41,8 +43,8 @@ function Unidades() {
           <div className="stat-card">
             <div className="stat-icon verde"><IconHospital size={22} /></div>
             <div className="stat-info">
-              <span>Unidades</span>
-              <strong>{unidades.length} ativas</strong>
+              <span>Status</span>
+              <strong>{unicaUnidade ? (unicaUnidade.ativa === false ? 'Fechada' : 'Aberta') : `${unidades.length} ativas`}</strong>
             </div>
           </div>
           <div className="stat-card">
@@ -61,34 +63,52 @@ function Unidades() {
           </div>
         </div>
 
-        <div className="section-title">Escolha uma unidade</div>
-
         {carregando ? (
-          <div className="carregando">Carregando unidades...</div>
+          <div className="carregando">Carregando unidade...</div>
         ) : unidades.length === 0 ? (
           <div className="vazio">Nenhuma unidade disponível no momento.</div>
-        ) : (
-          <div className="unidades-grid">
-            {unidades.map((unidade) => (
-              <div
-                key={unidade.id}
-                className="unidade-card"
-                onClick={() => navigate(`/unidades/${unidade.id}/profissionais`)}
-              >
-                <div className="unidade-icon"><IconHospital size={24} /></div>
-                <div className="unidade-info">
-                  <h3>{unidade.nome}</h3>
-                  <div className="unidade-meta">
-                    <span><IconMapPin size={13} /> {unidade.endereco}</span>
-                    {unidade.telefone && <span><IconPhone size={13} /> {unidade.telefone}</span>}
-                    <span><IconClock size={13} /> {unidade.horarioAbertura?.slice(0, 5)} às {unidade.horarioFechamento?.slice(0, 5)}</span>
-                  </div>
-                </div>
-                <span className="unidade-badge"><IconCheck size={13} /> Aberta</span>
-                <div className="unidade-arrow"><IconArrowRight size={18} /></div>
-              </div>
-            ))}
+        ) : unicaUnidade ? (
+          <div className="unidade-hero">
+            <div className="unidade-hero-icon"><IconHospital size={32} /></div>
+            <h3>{unicaUnidade.nome}</h3>
+            <div className="unidade-hero-meta">
+              <span><IconMapPin size={14} /> {unicaUnidade.endereco}</span>
+              {unicaUnidade.telefone && <span><IconPhone size={14} /> {unicaUnidade.telefone}</span>}
+              <span><IconClock size={14} /> {unicaUnidade.horarioAbertura?.slice(0, 5)} às {unicaUnidade.horarioFechamento?.slice(0, 5)}</span>
+            </div>
+            <span className="unidade-hero-badge"><IconCheck size={13} /> Aberta</span>
+            <button
+              className="btn-ver-profissionais"
+              onClick={() => navigate(`/unidades/${unicaUnidade.id}/profissionais`)}
+            >
+              Ver profissionais disponíveis <IconArrowRight size={18} />
+            </button>
           </div>
+        ) : (
+          <>
+            <div className="section-title">Escolha uma unidade</div>
+            <div className="unidades-grid">
+              {unidades.map((unidade) => (
+                <div
+                  key={unidade.id}
+                  className="unidade-card"
+                  onClick={() => navigate(`/unidades/${unidade.id}/profissionais`)}
+                >
+                  <div className="unidade-icon"><IconHospital size={24} /></div>
+                  <div className="unidade-info">
+                    <h3>{unidade.nome}</h3>
+                    <div className="unidade-meta">
+                      <span><IconMapPin size={13} /> {unidade.endereco}</span>
+                      {unidade.telefone && <span><IconPhone size={13} /> {unidade.telefone}</span>}
+                      <span><IconClock size={13} /> {unidade.horarioAbertura?.slice(0, 5)} às {unidade.horarioFechamento?.slice(0, 5)}</span>
+                    </div>
+                  </div>
+                  <span className="unidade-badge"><IconCheck size={13} /> Aberta</span>
+                  <div className="unidade-arrow"><IconArrowRight size={18} /></div>
+                </div>
+              ))}
+            </div>
+          </>
         )}
       </main>
     </div>

@@ -282,3 +282,43 @@
     display: none;
   }
 }
+
+/* Botão voltar: só existe no celular */
+.btn-voltar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  /* Etapa 1: tela de boas-vindas ocupa tudo */
+  .login-container.etapa-boas-vindas .bv { display: flex; }
+  .login-container.etapa-boas-vindas .login-right { display: none; }
+
+  /* Etapa 2: formulário de login */
+  .login-container.etapa-form .bv { display: none; }
+  .login-container.etapa-form .login-right {
+    padding: 24px 16px;
+    animation: form-entra 0.25s ease-out;
+  }
+
+  .btn-voltar {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 20px;
+    padding: 4px 0;
+    background: none;
+    border: none;
+    color: var(--gray-600);
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .btn-voltar svg { transform: rotate(180deg); }
+
+  .login-box { padding: 28px 22px; }
+}
+
+@keyframes form-entra {
+  from { opacity: 0; transform: translateX(16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}

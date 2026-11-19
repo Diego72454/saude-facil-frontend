@@ -2,7 +2,8 @@ import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import api from '../services/api'
-import { IconStethoscope, IconClipboard, IconClock, IconCheck, IconCalendar, IconHospital, IconBolt } from '../components/Icons'
+import { IconStethoscope, IconClipboard, IconClock, IconCheck, IconCalendar, IconHospital, IconBolt, IconArrowRight } from '../components/Icons'
+import BoasVindas from '../components/BoasVindas'
 import '../styles/Login.css'
 
 function Login() {
@@ -10,6 +11,8 @@ function Login() {
   const [senha, setSenha] = useState('')
   const [erro, setErro] = useState('')
   const [carregando, setCarregando] = useState(false)
+  // No celular, começa na tela de boas-vindas; no desktop essa etapa nunca aparece
+  const [etapa, setEtapa] = useState('boas-vindas')
 
   const { login } = useAuth()
   const navigate = useNavigate()
@@ -38,7 +41,9 @@ function Login() {
   }
 
   return (
-    <div className="login-container">
+    <div className={`login-container etapa-${etapa}`}>
+
+      <BoasVindas onEntrar={() => setEtapa('form')} />
 
       {/* Balões flutuantes */}
       <div className="balao balao-1"><IconClipboard size={14} /> Ficha emitida!</div>
@@ -82,6 +87,10 @@ function Login() {
 
       <div className="login-right">
         <div className="login-box">
+          <button type="button" className="btn-voltar" onClick={() => setEtapa('boas-vindas')}>
+            <IconArrowRight size={16} /> Voltar
+          </button>
+
           <div className="login-header">
             <div className="login-tag">Portal do Paciente</div>
             <h2>Bem-vindo de volta!</h2>

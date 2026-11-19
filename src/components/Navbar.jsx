@@ -28,7 +28,7 @@ function Navbar() {
     <header className="navbar">
       <div className="navbar-content">
         <h1 onClick={() => navigate('/unidades')} className="navbar-logo">
-          <IconStethoscope size={20} /> Lumen care
+          <IconStethoscope size={20} /> Mais Saùde
         </h1>
 
         <nav className="navbar-menu">

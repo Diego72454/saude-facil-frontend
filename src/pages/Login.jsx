@@ -50,7 +50,7 @@ function Login() {
       <div className="login-left">
         <div className="login-logo">
           <span className="logo-icone"><IconStethoscope size={22} /></span>
-          <span className="logo-nome">Lumen care</span>
+          <span className="logo-nome">Mais Saùde</span>
         </div>
         <h1>Saúde na palma<br/>da sua mão.</h1>
         <p>Pegue fichas, agende consultas e acompanhe seu atendimento — tudo pelo celular, sem fila.</p>
